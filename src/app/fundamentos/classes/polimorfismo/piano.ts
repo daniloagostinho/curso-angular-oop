@@ -1,4 +1,4 @@
-import { InstrumentoMusical } from "../interfaces/instrumentoMusical";
+import { InstrumentoMusical } from "../../interfaces/instrumentoMusical";
 
 export class Piano implements InstrumentoMusical {
     tocar(): void {

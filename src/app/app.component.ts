@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import { MinhaPrimeiraClasse } from './fundamentos/classes/minhaPrimeiraClasse';
-import { MinhaSegundaClasse } from './fundamentos/classes/minhaSegundaClasse';
-import { Gato } from './fundamentos/classes/gato';
-import { Cachorro } from './fundamentos/classes/cachorro';
-import { Funcionario } from './fundamentos/classes/funcionario';
-import { Carro } from './fundamentos/classes/carro';
-import { Aviao } from './fundamentos/classes/aviao';
-import { Guitarra } from './fundamentos/classes/guitarra';
-import { TocarMusica } from './fundamentos/classes/tocarMusica';
-import { Piano } from './fundamentos/classes/piano';
-import { ClienteNormal } from './modelos/clienteNormal';
-import { QuartoSimples } from './modelos/quartoSimples';
-import { Reserva } from './modelos/reserva';
-import { ClienteVIP } from './modelos/clienteVIP';
-import { QuartoLuxo } from './modelos/quartoLuxo';
-import { Quarto } from './interfaces/quarto.interface';
-import { HotelService } from './servicos/hotel.service';
+import { MinhaPrimeiraClasse } from './fundamentos/classes/outros exemplos/minhaPrimeiraClasse';
+import { MinhaSegundaClasse } from './fundamentos/classes/outros exemplos/minhaSegundaClasse';
+import { Gato } from './fundamentos/classes/abstração/gato';
+import { Cachorro } from './fundamentos/classes/abstração/cachorro';
+import { Funcionario } from './fundamentos/super/funcionario';
+import { Carro } from './fundamentos/classes/herança/carro';
+import { Aviao } from './fundamentos/classes/herança/aviao';
+import { Guitarra } from './fundamentos/classes/polimorfismo/guitarra';
+import { TocarMusica } from './fundamentos/classes/polimorfismo/tocarMusica';
+import { Piano } from './fundamentos/classes/polimorfismo/piano';
+import { ClienteNormal } from './projeto-reservas-hoteis/modelos/clienteNormal';
+import { QuartoSimples } from './projeto-reservas-hoteis/modelos/quartoSimples';
+import { Reserva } from './projeto-reservas-hoteis/modelos/reserva';
+import { ClienteVIP } from './projeto-reservas-hoteis/modelos/clienteVIP';
+import { QuartoLuxo } from './projeto-reservas-hoteis/modelos/quartoLuxo';
+import { Quarto } from './projeto-reservas-hoteis/interfaces/quarto.interface';
+import { HotelService } from './projeto-reservas-hoteis/servicos/hotel.service';
 
 @Component({
   selector: 'app-root',
@@ -99,8 +99,12 @@ export class AppComponent {
     let cliente2 = new ClienteVIP('Rafa', 'VIP');
     let reserva2 = new Reserva(cliente2, quarto2, 2)
 
-    console.log(reserva.detalhesReserva);
-    
+    // console.log(reserva.detalhesReserva);
+
+    let funcionario = new Funcionario('Danilo', 'Dev');
+
+    console.log(funcionario)
+    funcionario.message()
     
   }
 
@@ -124,7 +128,7 @@ export class AppComponent {
 
     this.hotelService.addReserva(reserva);
 
-    console.log(this.hotelService.getReservas());
+    console.log(reserva.detalhesReserva);
 
   }
   

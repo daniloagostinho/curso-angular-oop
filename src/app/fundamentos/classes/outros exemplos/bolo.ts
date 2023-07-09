@@ -1,4 +1,4 @@
-import { BoloInterface } from "../interfaces/bolo.interface";
+import { BoloInterface } from "../../interfaces/bolo.interface";
 
 export class Bolo {
     constructor(public sabor: string, public peso: number) {}

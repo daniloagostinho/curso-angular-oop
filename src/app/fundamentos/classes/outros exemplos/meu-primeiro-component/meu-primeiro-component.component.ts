@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BoloInterface } from '../interfaces/bolo.interface';
-import { Bolo } from '../classes/bolo';
+import { BoloInterface } from '../../../interfaces/bolo.interface';
+import { Bolo } from '../bolo';
 
 @Component({
   selector: 'app-meu-primeiro-component',

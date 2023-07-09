@@ -1,4 +1,4 @@
-import { AnimalInterface } from "../interfaces/animal.interface";
+import { AnimalInterface } from "../../interfaces/animal.interface";
 
 export class Animal implements AnimalInterface {
     nome: string;

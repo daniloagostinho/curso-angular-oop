@@ -1,0 +1,47 @@
+<div class="container mt-5" *ngIf="!conta">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header bg-primary text-white">Cadastro de Conta</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nome">Nome do titular:</label>
+                            <input id="nome" [(ngModel)]="nome" placeholder="Nome do titular" name="nome" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoConta">Tipo de conta:</label>
+                            <select id="tipoConta" [(ngModel)]="tipoConta" name="tipoConta" class="form-control">
+                                <option value="">Selecione o tipo de conta</option>
+                                <option value="corrente">Conta Corrente</option>
+                                <option value="salario">Conta Salario</option>
+                                <option value="poupanca">Conta Poupança</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" (click)="criarConta()">Criar Conta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5" *ngIf="conta">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Titular: {{conta.titular}}</h2>
+        </div>
+        <div class="card-body">
+            <p class="mb-1"><strong>Tipo de Conta: {{conta.getTipo()}}</strong></p>
+            <p class="mb-3"><strong>Saldo: R$ {{conta.getSaldo}}</strong></p>
+
+            <div class="form-group">
+                <label for="valorTransacao">Valor:</label>
+                <input id="valorTransacao" [(ngModel)]="valorTransacao" type="number" placeholder="Valor" name="valorTransacao" class="form-control">
+            </div>
+
+            <button class="btn btn-success mr-2" (click)="depositar()">Depositar</button>
+            <button class="btn btn-danger" (click)="sacar()">Sacar</button>
+        </div>
+    </div>
+</div>
