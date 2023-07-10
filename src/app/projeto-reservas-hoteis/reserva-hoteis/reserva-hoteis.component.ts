@@ -6,6 +6,7 @@ import { QuartoSimples } from '../modelos/quartoSimples';
 import { QuartoLuxo } from '../modelos/quartoLuxo';
 import { Reserva } from '../modelos/reserva';
 import { HotelService } from '../servicos/hotel.service';
+import { Cliente } from '../interfaces/cliente.interface';
 
 @Component({
   selector: 'app-reserva-hoteis',
@@ -13,21 +14,22 @@ import { HotelService } from '../servicos/hotel.service';
   styleUrls: ['./reserva-hoteis.component.css']
 })
 export class ReservaHoteisComponent {
-  cliente = {nome: ''};
+  clienteInput = {nome: ''}
+  cliente!: Cliente;
   tipoCliente = 'normal';
   quarto!: Quarto;
   tipoQuarto = '';
 
-  quantidadeDias!: number;
+  quantidadeDias!: any;
 
   constructor(public hotelService: HotelService) {}
 
   criarCliente(): void {
     if(this.tipoCliente === 'normal') {
-      this.cliente = new ClienteNormal(this.cliente.nome, 'Normal');
+      this.cliente = new ClienteNormal(this.clienteInput.nome, 'Normal');
       this.tipoQuarto = 'simples';
     } else if(this.tipoCliente === 'vip') {
-      this.cliente = new ClienteVIP(this.cliente.nome, 'VIP');
+      this.cliente = new ClienteVIP(this.clienteInput.nome, 'VIP');
       this.tipoQuarto = 'deluxo'
     }
 
@@ -56,6 +58,8 @@ export class ReservaHoteisComponent {
     this.hotelService.addReserva(reserva);
 
     console.log(reserva.detalhesReserva);
+    this.clienteInput.nome = '';
+    this.quantidadeDias = null;
 
   }
 }
