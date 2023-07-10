@@ -25,27 +25,8 @@ import { HotelService } from './projeto-reservas-hoteis/servicos/hotel.service';
 })
 export class AppComponent {
   title = 'fundamentos-oop';
-  cliente = {nome: ''};
-  tipoCliente = 'normal';
-  quarto!: Quarto;
-  tipoQuarto = '';
-
-  quantidadeDias!: number;
-
-  constructor(public hotelService: HotelService) {}
-
-  criarCliente(): void {
-    if(this.tipoCliente === 'normal') {
-      this.cliente = new ClienteNormal(this.cliente.nome, 'Normal');
-      this.tipoQuarto = 'simples';
-    } else if(this.tipoCliente === 'vip') {
-      this.cliente = new ClienteVIP(this.cliente.nome, 'VIP');
-      this.tipoQuarto = 'deluxo'
-    }
-
-    this.hotelService.setCliente(this.cliente);
-    this.escolherQuarto();
-  }
+  reservaHoteis = false;
+  contaBancaria = false;
 
   ngOnInit() {
   //  let meuPrimeiroObjeto = new MinhaPrimeiraClasse('Danilo', 30, 'Dev');
@@ -108,29 +89,15 @@ export class AppComponent {
     
   }
 
-  escolherQuarto(): void {
-    if(this.tipoQuarto === 'simples') {
-      this.quarto = new QuartoSimples();
-    } else if(this.tipoQuarto === 'deluxo') {
-      this.quarto = new QuartoLuxo();
-    }
-
-    this.hotelService.setQuarto(this.quarto);
+  reservaHoteisFunc(): void {
+    this.reservaHoteis = !this.reservaHoteis;
+    this.contaBancaria = false;
   }
 
-  fazerReserva(): void {
-    this.criarCliente();
-    
-    let cliente = this.hotelService.getCliente();
-    let quarto = this.hotelService.getQuarto();
-    let reserva = new Reserva(cliente, quarto, this.quantidadeDias);
-    
-
-    this.hotelService.addReserva(reserva);
-
-    console.log(reserva.detalhesReserva);
-
+  contaBancariaFunc(): void {
+    this.contaBancaria = !this.contaBancaria;
+    this.reservaHoteis = false;
   }
-  
+
 }
 

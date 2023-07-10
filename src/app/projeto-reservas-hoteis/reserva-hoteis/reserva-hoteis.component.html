@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Reserva de Hoteis</h1>
+      <p class="lead">Projeto desenvolvido com os pilares da Orientação a Objetos</p>
+    </div>
+  
+    <h2>Detalhes da reserva</h2>
+    <div class="form-group">
+      <label>Nome:</label>
+      <input [(ngModel)]="cliente.nome" class="form-control" placeholder="Nome do cliente">
+    </div>
+    <div class="form-group">
+      <label>Tipo:</label>
+      <select [(ngModel)]="tipoCliente" class="form-control">
+        <option value="normal">Normal</option>
+        <option value="vip">VIP</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Quantidade de Dias:</label>
+      <input [(ngModel)]="quantidadeDias" type="number" min="1" class="form-control" placeholder="Quantidade de dias">
+    </div>
+    <button (click)="fazerReserva()" class="btn btn-primary">Fazer reserva</button>
+  
+    <div class="mt-4" *ngIf="hotelService.getReservas().length > 0">
+      <h2>Lista de Reservas</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome do cliente</th>
+            <th>Tipo do cliente</th>
+            <th>Tipo do quarto</th>
+            <th>Quantidade de dias</th>
+            <th>Valor da reserva</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of hotelService.getReservas()">
+            <td>{{reserva.cliente.nome}}</td>
+            <td>{{reserva.cliente.tipo}}</td>
+            <td>{{reserva.quarto.tipo}}</td>
+            <td>{{reserva.quantidadeDias}}</td>
+            <td>R$ {{reserva.valorTotal()}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
